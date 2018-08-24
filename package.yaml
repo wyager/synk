@@ -1,0 +1,83 @@
+name:                synk
+version:             0.1.0.0
+github:              "githubuser/synk"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2018 Author name here"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/synk#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- streaming
+- mmorph
+
+ghc-options:
+- -O2
+- -Wall
+- -Werror
+
+default-extensions:
+- OverloadedLists
+- OverloadedStrings
+- DataKinds
+- TypeOperators
+- MultiParamTypeClasses
+- DeriveGeneric
+- FlexibleContexts
+- FlexibleInstances
+- LambdaCase
+- ScopedTypeVariables
+- GeneralizedNewtypeDeriving
+- DerivingStrategies
+- DeriveAnyClass
+- TypeApplications
+- DeriveFunctor
+- DeriveFoldable
+- KindSignatures
+- GADTs
+- TupleSections
+- RankNTypes
+- InstanceSigs
+- TypeFamilies
+- PolyKinds
+- FunctionalDependencies
+- TypeFamilyDependencies
+
+library:
+  source-dirs: src
+
+
+executables:
+  synk-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - synk
+
+tests:
+  synk-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - synk

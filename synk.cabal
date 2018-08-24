@@ -1,0 +1,71 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: f47accdcda7f1c50298a805cfe0b01d1b8a604b23c8f65c75d5eab4b2f52bc7d
+
+name:           synk
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/synk#readme>
+homepage:       https://github.com/githubuser/synk#readme
+bug-reports:    https://github.com/githubuser/synk/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/synk
+
+library
+  exposed-modules:
+      Synk
+  other-modules:
+      Paths_synk
+  hs-source-dirs:
+      src
+  default-extensions: OverloadedLists OverloadedStrings DataKinds TypeOperators MultiParamTypeClasses DeriveGeneric FlexibleContexts FlexibleInstances LambdaCase ScopedTypeVariables GeneralizedNewtypeDeriving DerivingStrategies DeriveAnyClass TypeApplications DeriveFunctor DeriveFoldable KindSignatures GADTs TupleSections RankNTypes InstanceSigs TypeFamilies PolyKinds FunctionalDependencies TypeFamilyDependencies
+  ghc-options: -O2 -Wall -Werror
+  build-depends:
+      base >=4.7 && <5
+    , mmorph
+    , streaming
+  default-language: Haskell2010
+
+executable synk-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_synk
+  hs-source-dirs:
+      app
+  default-extensions: OverloadedLists OverloadedStrings DataKinds TypeOperators MultiParamTypeClasses DeriveGeneric FlexibleContexts FlexibleInstances LambdaCase ScopedTypeVariables GeneralizedNewtypeDeriving DerivingStrategies DeriveAnyClass TypeApplications DeriveFunctor DeriveFoldable KindSignatures GADTs TupleSections RankNTypes InstanceSigs TypeFamilies PolyKinds FunctionalDependencies TypeFamilyDependencies
+  ghc-options: -O2 -Wall -Werror -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , mmorph
+    , streaming
+    , synk
+  default-language: Haskell2010
+
+test-suite synk-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_synk
+  hs-source-dirs:
+      test
+  default-extensions: OverloadedLists OverloadedStrings DataKinds TypeOperators MultiParamTypeClasses DeriveGeneric FlexibleContexts FlexibleInstances LambdaCase ScopedTypeVariables GeneralizedNewtypeDeriving DerivingStrategies DeriveAnyClass TypeApplications DeriveFunctor DeriveFoldable KindSignatures GADTs TupleSections RankNTypes InstanceSigs TypeFamilies PolyKinds FunctionalDependencies TypeFamilyDependencies
+  ghc-options: -O2 -Wall -Werror -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , mmorph
+    , streaming
+    , synk
+  default-language: Haskell2010
