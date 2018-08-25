@@ -13,12 +13,15 @@ module Synk
     run,
     zipsWith',
     (+>),
-    for
+    for,
+    yield,
+    map,
+    zip
     ) where
 
-import Prelude hiding (zip)
+import Prelude hiding (zip,map)
 import qualified Streaming.Internal as S
-import qualified Streaming.Prelude as S (Of, for)
+import qualified Streaming.Prelude as S
 import GHC.TypeLits (Nat, KnownNat, natVal, type (+), type (*))
 import Data.Proxy (Proxy(..))
 
@@ -68,3 +71,11 @@ a +> b = Synk $ runSynk a >> runSynk b
 for :: (Monad m, Functor f) => Synk i (S.Of a) m r -> (a -> Synk j f m x) -> Synk (i*j) f m r
 for s f = Synk $ S.for (runSynk s) (runSynk . f)
 
+yield :: Monad m => a -> Synk 1 (S.Of a) m ()
+yield = Synk . S.yield 
+
+map :: Monad m => (a -> b) -> Synk n (S.Of a) m r -> Synk n (S.Of b) m r
+map f = Synk . S.map f . runSynk
+
+zip :: Monad m => Synk n (S.Of a) m r -> Synk n (S.Of b) m r -> Synk n (S.Of (a, b)) m r
+zip l r = Synk $ S.zip (runSynk l) (runSynk r)
